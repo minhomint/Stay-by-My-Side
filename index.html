@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>민호특공대 뮤비 총공 🎬</title>
+    <title>민호특공대 유튜브브 총공 🎬</title>
     <style>
         * {
             margin: 0;
@@ -268,49 +268,12 @@
         .btn:active {
             transform: translateY(-1px);
         }
-        .mission-guide {
-            padding: 40px 30px;
-            background: white;
-            border-top: 3px solid #00CEC9;
-        }
-        .mission-guide h3 {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 800;
-            color: #2d3436;
-            margin-bottom: 25px;
-        }
-        .mission-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .mission-item {
-            background: linear-gradient(135deg, #00CEC9 0%, #00B8B2 100%);
-            color: white;
-            padding: 25px 20px;
-            border-radius: 15px;
-            text-align: center;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
-            transition: transform 0.3s ease;
-        }
-        .mission-item:hover {
-            transform: translateY(-5px);
-        }
-        .mission-item .icon {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
         .footer {
             padding: 25px;
             text-align: center;
             background: white;
             color: #636e72;
             font-size: 14px;
-            border-top: 1px solid #e9f5f5;
         }
         .footer .heart {
             color: #00CEC9;
@@ -400,37 +363,29 @@
 
             <div class="goal-card" id="goal-2">
                 <div class="goal-header">
-                    <div class="goal-title">I will let go</div>
+                    <div class="goal-title">Lonely Love</div>
                     <div class="goal-badge">곡 3</div>
                 </div>
                 <div class="progress-info">
                     <span class="current-views">현재: <span id="current-2">0</span>뷰</span>
-                    <span class="target-views">목표: 500,000뷰</span>
+                    <span class="target-views">목표: 100,000뷰</span>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-2" style="width: 0%"></div>
                 </div>
             </div>
-        </div>
 
-        <div class="mission-guide">
-            <h3>✨ 총공 미션 가이드</h3>
-            <div class="mission-list">
-                <div class="mission-item">
-                    <div class="icon">👀</div>
-                    <div>영상<br>시청하기</div>
+            <div class="goal-card" id="goal-3">
+                <div class="goal-header">
+                    <div class="goal-title">I will let go</div>
+                    <div class="goal-badge">곡 4</div>
                 </div>
-                <div class="mission-item">
-                    <div class="icon">👍</div>
-                    <div>좋아요<br>누르기</div>
+                <div class="progress-info">
+                    <span class="current-views">현재: <span id="current-3">0</span>뷰</span>
+                    <span class="target-views">목표: 500,000뷰</span>
                 </div>
-                <div class="mission-item">
-                    <div class="icon">💬</div>
-                    <div>댓글<br>남기기</div>
-                </div>
-                <div class="mission-item">
-                    <div class="icon">🔔</div>
-                    <div>알림 설정<br>켜기</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-3" style="width: 0%"></div>
                 </div>
             </div>
         </div>
@@ -445,11 +400,12 @@
         // ========================================
         // 📊 여기만 수정하면 진행률 업데이트!
         // ========================================
-        let 업데이트시간 = "2025.10.16 18:00";  // 업데이트 시간
+        let 업데이트시간 = "2024.10.16 18:00";  // 업데이트 시간
         
         let 현재조회수1 = 55048;      // 곡1: 내 곁에 있어주 (야외녹음실)
         let 현재조회수2 = 51109;      // 곡2: 내 곁에 있어주 (Official MV)
-        let 현재조회수3 = 256884;     // 곡3: I will let go
+        let 현재조회수3 = 16151;      // 곡3: Lonely Love
+        let 현재조회수4 = 256884;     // 곡4: I will let go
         // ========================================
 
         // 총공 영상 정보 (곡별 차등 시간 설정)
@@ -469,11 +425,18 @@
                 get current() { return 현재조회수2; }
             },
             {
+                id: 'ILppFoa3FTI',
+                title: 'Lonely Love',
+                target: 100000,
+                duration: 50,  // 50초
+                get current() { return 현재조회수3; }
+            },
+            {
                 id: 'q78AVE07wdI',
                 title: 'I will let go',
                 target: 500000,
                 duration: 50,  // 50초
-                get current() { return 현재조회수3; }
+                get current() { return 현재조회수4; }
             }
         ];
 
@@ -568,7 +531,3 @@
     </script>
 </body>
 </html>
-
-
-
-
