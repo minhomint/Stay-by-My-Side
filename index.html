@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>민호특공대 뮤비 총공 🎬</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard", Arial, sans-serif;
+            background: linear-gradient(135deg, #00CEC9 0%, #0984e3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 206, 201, 0.4);
+        }
+        .hero {
+            background: linear-gradient(135deg, #00CEC9 0%, #00B8B2 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '🎬';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.08;
+            top: -50px;
+            left: -30px;
+            animation: float 4s ease-in-out infinite;
+        }
+        .hero::after {
+            content: '⚡';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.08;
+            bottom: -40px;
+            right: -20px;
+            animation: float 3s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .hero .subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .team {
+            font-size: 16px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        .mission-banner {
+            background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .video-section {
+            padding: 40px 30px;
+            background: #f8fcfc;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .timer-info {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .timer-info p {
+            font-size: 16px;
+            color: #2d3436;
+            font-weight: 600;
+        }
+        .timer-info .timer {
+            font-size: 24px;
+            color: #00CEC9;
+            font-weight: 800;
+            margin-top: 5px;
+        }
+        .goals-section {
+            padding: 40px 30px;
+            background: white;
+        }
+        .goals-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #2d3436;
+            margin-bottom: 35px;
+        }
+        .goal-card {
+            background: linear-gradient(135deg, #f8fcfc 0%, #e8f8f8 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 3px solid #00CEC9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 206, 201, 0.3);
+        }
+        .goal-card.playing {
+            border-color: #FF6B6B;
+            box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2);
+        }
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .goal-title {
+            flex: 1;
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.4;
+        }
+        .goal-badge {
+            background: #00CEC9;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .goal-card.playing .goal-badge {
+            background: #FF6B6B;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #636e72;
+        }
+        .current-views {
+            color: #00CEC9;
+            font-size: 16px;
+        }
+        .target-views {
+            color: #2d3436;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #dfe6e9;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00CEC9 0%, #00B8B2 100%);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .controls {
+            padding: 30px;
+            text-align: center;
+            background: #f8fcfc;
+        }
+        .btn {
+            background: linear-gradient(135deg, #00CEC9 0%, #00B8B2 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 800;
+            box-shadow: 0 6px 20px rgba(0, 206, 201, 0.4);
+            letter-spacing: -0.3px;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 206, 201, 0.5);
+        }
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        .mission-guide {
+            padding: 40px 30px;
+            background: white;
+            border-top: 3px solid #00CEC9;
+        }
+        .mission-guide h3 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            color: #2d3436;
+            margin-bottom: 25px;
+        }
+        .mission-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .mission-item {
+            background: linear-gradient(135deg, #00CEC9 0%, #00B8B2 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .mission-item:hover {
+            transform: translateY(-5px);
+        }
+        .mission-item .icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .footer {
+            padding: 25px;
+            text-align: center;
+            background: white;
+            color: #636e72;
+            font-size: 14px;
+            border-top: 1px solid #e9f5f5;
+        }
+        .footer .heart {
+            color: #00CEC9;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.15); }
+            20%, 40% { transform: scale(1); }
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .goals-title {
+                font-size: 24px;
+            }
+            .goal-header {
+                flex-direction: column;
+            }
+            .mission-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🎬 유튜브 총공 캠페인</h1>
+            <div class="subtitle">⚡ 함께 목표를 달성해요! ⚡</div>
+            <div class="team">Made by 민호특공대 💙</div>
+        </div>
+
+        <div class="mission-banner">
+            🔥 목표 달성까지 함께 달려요! 🔥
+        </div>
+
+        <div class="video-section">
+            <div class="video-wrapper">
+                <iframe id="videoFrame" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <div class="timer-info">
+                <p>⏱️ 다음 곡까지</p>
+                <div class="timer" id="timer">40초</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" onclick="playNextRandom()">🔄 다음 곡 재생</button>
+        </div>
+
+        <div class="goals-section">
+            <h2 class="goals-title">🎯 목표 현황</h2>
+            
+            <div class="goal-card" id="goal-0">
+                <div class="goal-header">
+                    <div class="goal-title">내 곁에 있어주 | 야외녹음실｜Beyond the Studio｜LIVE</div>
+                    <div class="goal-badge">곡 1</div>
+                </div>
+                <div class="progress-info">
+                    <span class="current-views">현재: <span id="current-0">0</span>뷰</span>
+                    <span class="target-views">목표: 100,000뷰</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-0" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="goal-card" id="goal-1">
+                <div class="goal-header">
+                    <div class="goal-title">'내 곁에 있어주 (Stay by My Side)' Official MV</div>
+                    <div class="goal-badge">곡 2</div>
+                </div>
+                <div class="progress-info">
+                    <span class="current-views">현재: <span id="current-1">0</span>뷰</span>
+                    <span class="target-views">목표: 100,000뷰</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-1" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="goal-card" id="goal-2">
+                <div class="goal-header">
+                    <div class="goal-title">I will let go</div>
+                    <div class="goal-badge">곡 3</div>
+                </div>
+                <div class="progress-info">
+                    <span class="current-views">현재: <span id="current-2">0</span>뷰</span>
+                    <span class="target-views">목표: 350,000뷰</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-2" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mission-guide">
+            <h3>✨ 총공 미션 가이드</h3>
+            <div class="mission-list">
+                <div class="mission-item">
+                    <div class="icon">👀</div>
+                    <div>영상<br>시청하기</div>
+                </div>
+                <div class="mission-item">
+                    <div class="icon">👍</div>
+                    <div>좋아요<br>누르기</div>
+                </div>
+                <div class="mission-item">
+                    <div class="icon">💬</div>
+                    <div>댓글<br>남기기</div>
+                </div>
+                <div class="mission-item">
+                    <div class="icon">🔔</div>
+                    <div>알림 설정<br>켜기</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Made with <span class="heart">💙</span> by 민호특공대<br>
+            <small style="margin-top: 10px; display: block; opacity: 0.7;">곡별로 45~55초 후 자동으로 랜덤 재생됩니다</small>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // 📊 여기 숫자 3개만 바꾸면 진행률 업데이트!
+        // ========================================
+        let 현재조회수1 = 45788;      // 곡1: 내 곁에 있어주 (야외녹음실)
+        let 현재조회수2 = 43353;      // 곡2: 내 곁에 있어주 (Official MV)
+        let 현재조회수3 = 254180;     // 곡3: I will let go
+        // ========================================
+
+        // 총공 영상 정보 (곡별 차등 시간 설정)
+        const videos = [
+            {
+                id: 'BRiBNS0aTVo',
+                title: '내 곁에 있어주 | 야외녹음실｜Beyond the Studio｜LIVE',
+                target: 100000,
+                duration: 45,  // 45초
+                get current() { return 현재조회수1; }
+            },
+            {
+                id: '0JeQF_nrSmU',
+                title: '\'내 곁에 있어주 (Stay by My Side)\' Official MV',
+                target: 100000,
+                duration: 55,  // 55초 (메인 곡이라 길게)
+                get current() { return 현재조회수2; }
+            },
+            {
+                id: 'q78AVE07wdI',
+                title: 'I will let go',
+                target: 350000,
+                duration: 50,  // 50초
+                get current() { return 현재조회수3; }
+            }
+        ];
+
+        let currentVideoIndex = -1;
+        let timerInterval;
+        let countdown = 40;
+
+        // 진행률 업데이트
+        function updateProgress() {
+            videos.forEach((video, index) => {
+                const percentage = Math.min((video.current / video.target) * 100, 100);
+                document.getElementById(`current-${index}`).textContent = video.current.toLocaleString();
+                document.getElementById(`progress-${index}`).style.width = percentage + '%';
+            });
+        }
+
+        // 랜덤 영상 재생
+        function playRandomVideo() {
+            const randomIndex = Math.floor(Math.random() * videos.length);
+            playVideo(randomIndex);
+        }
+
+        // 다음 랜덤 재생
+        function playNextRandom() {
+            let nextIndex;
+            do {
+                nextIndex = Math.floor(Math.random() * videos.length);
+            } while (nextIndex === currentVideoIndex && videos.length > 1);
+            playVideo(nextIndex);
+        }
+
+        // 영상 재생
+        function playVideo(index) {
+            currentVideoIndex = index;
+            const video = videos[index];
+            
+            // 재생 중 표시
+            document.querySelectorAll('.goal-card').forEach(card => {
+                card.classList.remove('playing');
+            });
+            document.getElementById(`goal-${index}`).classList.add('playing');
+            
+            // 영상 로드
+            const embedUrl = `https://www.youtube.com/embed/${video.id}?autoplay=1&start=0`;
+            document.getElementById('videoFrame').src = embedUrl;
+            
+            // 곡별 차등 시간으로 타이머 시작
+            startTimer(video.duration);
+        }
+
+        // 타이머 시작 (곡별 시간 적용)
+        function startTimer(duration) {
+            countdown = duration;
+            updateTimerDisplay();
+            
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            
+            timerInterval = setInterval(() => {
+                countdown--;
+                updateTimerDisplay();
+                
+                if (countdown <= 0) {
+                    clearInterval(timerInterval);
+                    playNextRandom();
+                }
+            }, 1000);
+        }
+
+        // 타이머 표시 업데이트
+        function updateTimerDisplay() {
+            document.getElementById('timer').textContent = countdown + '초';
+        }
+
+        // 페이지 로드 시 초기화
+        window.onload = function() {
+            updateProgress();
+            playRandomVideo();
+        };
+
+        // 페이지 종료 시 타이머 정리
+        window.onbeforeunload = function() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+        };
+    </script>
+</body>
+</html>
