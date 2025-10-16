@@ -133,6 +133,21 @@
             padding: 40px 30px;
             background: white;
         }
+        .update-time {
+            text-align: center;
+            font-size: 14px;
+            color: #636e72;
+            margin-bottom: 25px;
+            padding: 12px 20px;
+            background: #f8fcfc;
+            border-radius: 10px;
+            display: inline-block;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+        .update-time::before {
+            content: '📅 ';
+        }
         .goals-title {
             text-align: center;
             font-size: 28px;
@@ -353,6 +368,7 @@
 
         <div class="goals-section">
             <h2 class="goals-title">🎯 목표 현황</h2>
+            <div class="update-time" id="updateTime">최종 업데이트: -</div>
             
             <div class="goal-card" id="goal-0">
                 <div class="goal-header">
@@ -389,7 +405,7 @@
                 </div>
                 <div class="progress-info">
                     <span class="current-views">현재: <span id="current-2">0</span>뷰</span>
-                    <span class="target-views">목표: 500,000뷰</span>
+                    <span class="target-views">목표: 350,000뷰</span>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-2" style="width: 0%"></div>
@@ -424,19 +440,17 @@
             <small style="margin-top: 10px; display: block; opacity: 0.7;">곡별로 45~55초 후 자동으로 랜덤 재생됩니다</small>
         </div>
     </div>
-    
- <script>
-    // ========================================
-    // 📊 여기만 수정하면 진행률 업데이트!
-    // ========================================
-    let 업데이트시간 = "2025.10.16 13:00";  // ← 시간 수정
 
-    let 현재조회수1 = 49889;   // ← 조회수 3개 수정
-    let 현재조회수2 = 45727;
-    let 현재조회수3 = 255005;
-    // ========================================
-   
-       
+    <script>
+        // ========================================
+        // 📊 여기만 수정하면 진행률 업데이트!
+        // ========================================
+        let 업데이트시간 = "2025.10.16 13:15";  // 업데이트 시간
+        
+        let 현재조회수1 = 50369;      // 곡1: 내 곁에 있어주 (야외녹음실)
+        let 현재조회수2 = 46505;      // 곡2: 내 곁에 있어주 (Official MV)
+        let 현재조회수3 = 255160;     // 곡3: I will let go
+        // ========================================
 
         // 총공 영상 정보 (곡별 차등 시간 설정)
         const videos = [
@@ -469,6 +483,10 @@
 
         // 진행률 업데이트
         function updateProgress() {
+            // 업데이트 시간 표시
+            document.getElementById('updateTime').textContent = `최종 업데이트: ${업데이트시간}`;
+            
+            // 각 곡별 진행률
             videos.forEach((video, index) => {
                 const percentage = Math.min((video.current / video.target) * 100, 100);
                 document.getElementById(`current-${index}`).textContent = video.current.toLocaleString();
@@ -549,11 +567,4 @@
         };
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
