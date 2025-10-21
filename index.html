@@ -3,468 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>민호특공대 유튜브브 총공 🎬</title>
+    <title>랜덤이 만든 레전드플레이 | 민호특공대</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard", Arial, sans-serif;
-            background: linear-gradient(135deg, #00CEC9 0%, #0984e3 100%);
+            background: linear-gradient(135deg, #00CEC9 0%, #74B9FF 100%);
             min-height: 100vh;
             padding: 20px;
         }
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
             background: white;
-            border-radius: 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 206, 201, 0.3);
             overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0, 206, 201, 0.4);
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .hero {
+        .header {
             background: linear-gradient(135deg, #00CEC9 0%, #00B8B2 100%);
             color: white;
-            padding: 50px 30px;
+            padding: 40px 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
-        .hero::before {
-            content: '🎬';
-            position: absolute;
-            font-size: 200px;
-            opacity: 0.08;
-            top: -50px;
-            left: -30px;
-            animation: float 4s ease-in-out infinite;
-        }
-        .hero::after {
+        .header::before {
             content: '⚡';
             position: absolute;
             font-size: 150px;
-            opacity: 0.08;
-            bottom: -40px;
+            opacity: 0.1;
+            top: -30px;
             right: -20px;
-            animation: float 3s ease-in-out infinite reverse;
+            animation: float 3s ease-in-out infinite;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-        .hero h1 {
-            font-size: 42px;
-            font-weight: 900;
-            margin-bottom: 15px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 1;
-        }
-        .hero .subtitle {
-            font-size: 20px;
-            opacity: 0.95;
-            font-weight: 600;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-        .hero .team {
-            font-size: 16px;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-        .mission-banner {
-            background: linear-gradient(90deg, #FF6B6B 0%, #FF8E53 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 700;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-        .video-section {
-            padding: 40px 30px;
-            background: #f8fcfc;
-        }
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            background: #000;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .timer-info {
-            text-align: center;
-            margin-top: 20px;
-            padding: 15px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .timer-info p {
-            font-size: 16px;
-            color: #2d3436;
-            font-weight: 600;
-        }
-        .timer-info .timer {
-            font-size: 24px;
-            color: #00CEC9;
-            font-weight: 800;
-            margin-top: 5px;
-        }
-        .goals-section {
-            padding: 40px 30px;
-            background: white;
-        }
-        .update-time {
-            text-align: center;
-            font-size: 14px;
-            color: #636e72;
-            margin-bottom: 25px;
-            padding: 12px 20px;
-            background: #f8fcfc;
-            border-radius: 10px;
-            display: inline-block;
-            margin-left: 50%;
-            transform: translateX(-50%);
-        }
-        .update-time::before {
-            content: '📅 ';
-        }
-        .goals-title {
-            text-align: center;
-            font-size: 28px;
-            font-weight: 800;
-            color: #2d3436;
-            margin-bottom: 35px;
-        }
-        .goal-card {
-            background: linear-gradient(135deg, #f8fcfc 0%, #e8f8f8 100%);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border: 3px solid #00CEC9;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .goal-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 206, 201, 0.3);
-        }
-        .goal-card.playing {
-            border-color: #FF6B6B;
-            box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2);
-        }
-        .goal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            gap: 15px;
-        }
-        .goal-title {
-            flex: 1;
-            font-size: 18px;
-            font-weight: 700;
-            color: #2d3436;
-            line-height: 1.4;
-        }
-        .goal-badge {
-            background: #00CEC9;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-        .goal-card.playing .goal-badge {
-            background: #FF6B6B;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #636e72;
-        }
-        .current-views {
-            color: #00CEC9;
-            font-size: 16px;
-        }
-        .target-views {
-            color: #2d3436;
-        }
-        .progress-bar {
-            width: 100%;
-            height: 12px;
-            background: #dfe6e9;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #00CEC9 0%, #00B8B2 100%);
-            border-radius: 10px;
-            transition: width 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .controls {
-            padding: 30px;
-            text-align: center;
-            background: #f8fcfc;
-        }
+        @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-20px);} }
+        .header h1 { font-size: 32px; margin-bottom: 8px; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        .header .album { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.95; font-weight: 500; margin-bottom: 5px; }
+        .header .team-name { font-size: 14px; opacity: 0.9; }
+
+        .video-wrapper { position: relative; padding-bottom: 56.25%; background: #000; height: 0; }
+        #player { position: absolute; top:0; left:0; width:100%; height:100%; border:none; }
+
+        .timer-section { padding: 25px 30px; background: linear-gradient(to bottom, white 0%, #f8fcfc 100%); text-align: center; border-bottom: 2px solid #e8f8f8; }
+        .timer-display { font-size: 18px; color: #2d3436; font-weight: 600; margin-bottom: 8px; }
+        .timer-number { font-size: 36px; color: #00CEC9; font-weight: 800; margin-bottom: 8px; }
+        .now-playing { font-size: 14px; color: #636e72; margin-top: 5px; font-weight: 500; }
+
+        .controls { padding: 30px; text-align: center; background: linear-gradient(to bottom, white 0%, #f8fcfc 100%); }
         .btn {
             background: linear-gradient(135deg, #00CEC9 0%, #00B8B2 100%);
-            color: white;
-            border: none;
-            padding: 18px 50px;
-            font-size: 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 800;
-            box-shadow: 0 6px 20px rgba(0, 206, 201, 0.4);
-            letter-spacing: -0.3px;
+            color: white; border: none; padding: 16px 45px;
+            font-size: 17px; border-radius: 50px; cursor: pointer;
+            font-weight: 700; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,206,201,0.3);
         }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 206, 201, 0.5);
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,206,201,0.4); }
+
+        .playlist-section { padding: 35px 30px; background: #F0FFFE; border-top: 3px solid #00CEC9; }
+        .playlist-section h3 { font-size: 20px; color: #2d3436; margin-bottom: 25px; text-align: center; font-weight: 700; }
+        .playlist-section h3 .count { color: #00CEC9; font-weight: 800; font-size: 22px; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 20px; }
+        .video-card {
+            background: white; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,206,201,0.15); transition: all 0.3s ease;
+            cursor: pointer; border: 2px solid transparent;
         }
-        .btn:active {
-            transform: translateY(-1px);
-        }
-        .footer {
-            padding: 25px;
-            text-align: center;
-            background: white;
-            color: #636e72;
-            font-size: 14px;
-        }
-        .footer .heart {
-            color: #00CEC9;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            10%, 30% { transform: scale(1.15); }
-            20%, 40% { transform: scale(1); }
-        }
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-            .goals-title {
-                font-size: 24px;
-            }
-            .goal-header {
-                flex-direction: column;
-            }
-            .mission-list {
-                grid-template-columns: 1fr;
-            }
-        }
+        .video-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,206,201,0.25); border-color: #00CEC9; }
+        .video-card.playing { border-color: #FF6B6B; box-shadow: 0 0 0 4px rgba(255,107,107,0.2); }
+        .video-thumbnail { position: relative; padding-bottom: 56.25%; background: #000; overflow: hidden; }
+        .video-thumbnail img { position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition: transform 0.3s ease; }
+        .video-card:hover .video-thumbnail img { transform: scale(1.05); }
+        .video-info { padding: 14px; }
+        .video-title { font-size: 14px; font-weight: 600; color: #2d3436; line-height: 1.5; min-height: 42px; }
+        .footer { padding: 20px; text-align: center; background: white; color: #636e72; font-size: 13px; border-top: 1px solid #e9f5f5; }
+        @media (max-width:600px){.video-grid{grid-template-columns:1fr;}.header h1{font-size:26px;}}
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="hero">
-            <h1>🎬 유튜브 총공 캠페인</h1>
-            <div class="subtitle">⚡ 함께 목표를 달성해요! ⚡</div>
-            <div class="team">Made by 민호특공대 💙</div>
+        <div class="header">
+            <h1>🚀랜덤플레이</h1>
+            <div class="album">"(feat. 민트의 클릭)"</div>
+            <div class="subtitle">⚡ 조회수는 우연이 아닙니다! ⚡</div>
+            <div class="team-name"> 👀 홀로된 사랑랑 </div>
         </div>
 
-        <div class="mission-banner">
-            🔥 목표 달성까지 함께 달려요! 🔥
+        <div class="video-wrapper">
+            <div id="player"></div>
         </div>
 
-        <div class="video-section">
-            <div class="video-wrapper">
-                <iframe id="videoFrame" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
-            </div>
-            <div class="timer-info">
-                <p>⏱️ 다음 곡까지</p>
-                <div class="timer" id="timer">40초</div>
-            </div>
+        <div class="timer-section">
+            <div class="timer-display">⏱️ 다음 곡까지</div>
+            <div class="timer-number" id="timer">--</div>
+            <div class="now-playing" id="nowPlaying">재생 대기 중...</div>
         </div>
 
         <div class="controls">
             <button class="btn" onclick="playNextRandom()">🔄 다음 곡 재생</button>
         </div>
 
-        <div class="goals-section">
-            <h2 class="goals-title">🎯 목표 현황</h2>
-            <div class="update-time" id="updateTime">최종 업데이트: -</div>
-            
-            <div class="goal-card" id="goal-0">
-                <div class="goal-header">
-                    <div class="goal-title">내 곁에 있어주 | 야외녹음실｜Beyond the Studio｜LIVE</div>
-                    <div class="goal-badge">곡 1</div>
-                </div>
-                <div class="progress-info">
-                    <span class="current-views">현재: <span id="current-0">0</span>뷰</span>
-                    <span class="target-views">목표: 100,000뷰</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-0" style="width: 0%"></div>
-                </div>
-            </div>
-
-            <div class="goal-card" id="goal-1">
-                <div class="goal-header">
-                    <div class="goal-title">'내 곁에 있어주 (Stay by My Side)' Official MV</div>
-                    <div class="goal-badge">곡 2</div>
-                </div>
-                <div class="progress-info">
-                    <span class="current-views">현재: <span id="current-1">0</span>뷰</span>
-                    <span class="target-views">목표: 100,000뷰</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-1" style="width: 0%"></div>
-                </div>
-            </div>
-
-            <div class="goal-card" id="goal-2">
-                <div class="goal-header">
-                    <div class="goal-title">Lonely Love</div>
-                    <div class="goal-badge">곡 3</div>
-                </div>
-                <div class="progress-info">
-                    <span class="current-views">현재: <span id="current-2">0</span>뷰</span>
-                    <span class="target-views">목표: 100,000뷰</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-2" style="width: 0%"></div>
-                </div>
-            </div>
-
-            <div class="goal-card" id="goal-3">
-                <div class="goal-header">
-                    <div class="goal-title">I will let go</div>
-                    <div class="goal-badge">곡 4</div>
-                </div>
-                <div class="progress-info">
-                    <span class="current-views">현재: <span id="current-3">0</span>뷰</span>
-                    <span class="target-views">목표: 500,000뷰</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-3" style="width: 0%"></div>
-                </div>
-            </div>
+        <div class="playlist-section">
+            <h3>📋 전곡 재생목록 <span class="count" id="videoCount">0</span>개</h3>
+            <div class="video-grid" id="videoGrid"></div>
         </div>
 
         <div class="footer">
-            Made with <span class="heart">💙</span> by 민호특공대<br>
-            <small style="margin-top: 10px; display: block; opacity: 0.7;">곡별로 45~55초 후 자동으로 랜덤 재생됩니다</small>
+            Made with 💙 by 민호특공대<br>
+            <small style="opacity: 0.7;">🎁🎁🎁🎁🎁</small>
         </div>
     </div>
 
-    <script>
-        // ========================================
-        // 📊 여기만 수정하면 진행률 업데이트!
-        // ========================================
-        let 업데이트시간 = "2025.10.17 16:20";  // 업데이트 시간
-        
-        let 현재조회수1 = 88061;      // 곡1: 내 곁에 있어주 (야외녹음실)
-        let 현재조회수2 = 58519;      // 곡2: 내 곁에 있어주 (Official MV)
-        let 현재조회수3 = 20270;      // 곡3: Lonely Love
-        let 현재조회수4 = 261670;     // 곡4: I will let go
-        // ========================================
+    <!-- ✅ YouTube IFrame API 불러오기 -->
+    <script src="https://www.youtube.com/iframe_api"></script>
 
-        // 총공 영상 정보 (곡별 차등 시간 설정)
+    <script>
         const videos = [
-            {
-                id: 'BRiBNS0aTVo',
-                title: '내 곁에 있어주 | 야외녹음실｜Beyond the Studio｜LIVE',
-                target: 100000,
-                duration: 45,  // 45초
-                get current() { return 현재조회수1; }
-            },
-            {
-                id: '0JeQF_nrSmU',
-                title: '\'내 곁에 있어주 (Stay by My Side)\' Official MV',
-                target: 100000,
-                duration: 55,  // 55초 (메인 곡이라 길게)
-                get current() { return 현재조회수2; }
-            },
-            {
-                id: 'ILppFoa3FTI',
-                title: 'Lonely Love',
-                target: 100000,
-                duration: 50,  // 50초
-                get current() { return 현재조회수3; }
-            },
-            {
-                id: 'q78AVE07wdI',
-                title: 'I will let go',
-                target: 500000,
-                duration: 50,  // 50초
-                get current() { return 현재조회수4; }
-            }
+            { id: 'ZJo6KHpI-2k', title: '한계령 (Hankyeryeong Pass) Official MV' },
+            { id: 'BRiBNS0aTVo', title: '내 곁에 있어주 | 야외녹음실 ｜LIVE' },
+            { id: '-zYhlQn6yVI', title: '내 이름 아시죠 | 사랑의콜센타' },
+            { id: '0JeQF_nrSmU', title: '내 곁에 있어주 (Stay by My Side) Official MV' },
+            { id: 'jXJKJc5fZnE', title: '홀로된 사랑 (Lonely Love) Official MV' },
+            { id: '6lq_G6l4xRs', title: 'Lonely Love(홀로된 사랑) | 1theK' }
         ];
 
+        let player;
         let currentVideoIndex = -1;
+        let countdown = 0;
         let timerInterval;
-        let countdown = 40;
 
-        // 진행률 업데이트
-        function updateProgress() {
-            // 업데이트 시간 표시
-            document.getElementById('updateTime').textContent = `최종 업데이트: ${업데이트시간}`;
-            
-            // 각 곡별 진행률
-            videos.forEach((video, index) => {
-                const percentage = Math.min((video.current / video.target) * 100, 100);
-                document.getElementById(`current-${index}`).textContent = video.current.toLocaleString();
-                document.getElementById(`progress-${index}`).style.width = percentage + '%';
+        // YouTube API 준비 시
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '360',
+                width: '640',
+                videoId: '',
+                playerVars: { 'autoplay': 1, 'controls': 1, 'rel': 0 },
+                events: { 'onReady': onPlayerReady }
             });
         }
 
-        // 랜덤 영상 재생
-        function playRandomVideo() {
-            const randomIndex = Math.floor(Math.random() * videos.length);
-            playVideo(randomIndex);
+        function onPlayerReady() {
+            initializePlaylist();
+            playRandomVideo();
         }
 
-        // 다음 랜덤 재생
-        function playNextRandom() {
+        function getRandomDuration() {
+            return Math.floor(Math.random() * (184 - 52 + 1)) + 52; // 52~184초
+        }
+
+        function playRandomVideo() {
             let nextIndex;
             do {
                 nextIndex = Math.floor(Math.random() * videos.length);
@@ -472,67 +160,71 @@
             playVideo(nextIndex);
         }
 
-        // 영상 재생
         function playVideo(index) {
             currentVideoIndex = index;
             const video = videos[index];
-            
-            // 재생 중 표시
-            document.querySelectorAll('.goal-card').forEach(card => {
-                card.classList.remove('playing');
-            });
-            document.getElementById(`goal-${index}`).classList.add('playing');
-            
-            // 영상 로드
-            const embedUrl = `https://www.youtube.com/embed/${video.id}?autoplay=1&start=0`;
-            document.getElementById('videoFrame').src = embedUrl;
-            
-            // 곡별 차등 시간으로 타이머 시작
-            startTimer(video.duration);
+            player.loadVideoById(video.id);
+            document.getElementById('nowPlaying').textContent = `🎵 ${video.title}`;
+            highlightPlayingCard(index);
+
+            const duration = getRandomDuration();
+            startTimer(duration);
         }
 
-        // 타이머 시작 (곡별 시간 적용)
         function startTimer(duration) {
             countdown = duration;
             updateTimerDisplay();
-            
-            if (timerInterval) {
-                clearInterval(timerInterval);
-            }
-            
+            if (timerInterval) clearInterval(timerInterval);
+
             timerInterval = setInterval(() => {
                 countdown--;
                 updateTimerDisplay();
-                
                 if (countdown <= 0) {
                     clearInterval(timerInterval);
-                    playNextRandom();
+                    playRandomVideo();
                 }
             }, 1000);
         }
 
-        // 타이머 표시 업데이트
         function updateTimerDisplay() {
-            document.getElementById('timer').textContent = countdown + '초';
+            document.getElementById('timer').textContent = `${countdown}초`;
         }
 
-        // 페이지 로드 시 초기화
-        window.onload = function() {
-            updateProgress();
-            playRandomVideo();
-        };
+        function highlightPlayingCard(index) {
+            document.querySelectorAll('.video-card').forEach(card => card.classList.remove('playing'));
+            const card = document.getElementById(`card-${index}`);
+            if (card) card.classList.add('playing');
+        }
 
-        // 페이지 종료 시 타이머 정리
+        function initializePlaylist() {
+            const grid = document.getElementById('videoGrid');
+            const count = document.getElementById('videoCount');
+            grid.innerHTML = '';
+            count.textContent = videos.length;
+
+            videos.forEach((v, i) => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.id = `card-${i}`;
+                card.innerHTML = `
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}">
+                    </div>
+                    <div class="video-info"><div class="video-title">${v.title}</div></div>
+                `;
+                card.onclick = () => { playVideo(i); window.scrollTo({top:0,behavior:'smooth'}); };
+                grid.appendChild(card);
+            });
+        }
+
+        function playNextRandom() {
+            clearInterval(timerInterval);
+            playRandomVideo();
+        }
+
         window.onbeforeunload = function() {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-            }
+            if (timerInterval) clearInterval(timerInterval);
         };
     </script>
 </body>
 </html>
-
-
-
-
-
